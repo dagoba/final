@@ -9,6 +9,20 @@
 
                 <div class="card-body">
                     User Page.
+                    
+                    @foreach($users as $user)
+                        <div class="row mb-4">
+                            <div class="col-sm-4">
+                                {{$user->name}}
+                                {{$user->surname}}
+                                {{$user->addinfo}}
+                                @foreach($user->roles as $role)
+                                    <small class="text-muted">{{$role->name}}</small>
+                                @endforeach
+                            </div>
+                        </div>
+                    @endforeach
+
                 </div>
             </div>
         </div>

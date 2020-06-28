@@ -4,12 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use App\User;
+use App\Role;
 
 class MainController extends Controller
 {
     public function userMain()
     {
-        return view('user');
+        //$users = User::with('roles')->where('roles','doctor')->get();
+        $users = User::whereHas('roles', function ($query) {
+            $query->where('name', 'doctor');
+        })->get();
+        return view('user', ['users'=> $users]);
+        
     }
 
     public function adminMain()

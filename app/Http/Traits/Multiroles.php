@@ -8,12 +8,7 @@ trait Multiroles {
 
     public function hasRole($role)
     {
-        $roles = $this->roles()->where('name', $role)->count();
-            if ($roles == 1)
-            {
-                return true;
-            }
-        return false;
+        return $this->roles()->where('name', $role)->exists();
     }
 
 }

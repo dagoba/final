@@ -27,38 +27,6 @@ class PatientController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        // $userinfos = User::find($user->id);
-        // return view('userprofile', compact('userinfos'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -75,17 +43,6 @@ class PatientController extends Controller
             return redirect('/permission-denied');
         }
         return view('userprofile', compact('userProfile'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-
     }
 
     /**
@@ -108,17 +65,6 @@ class PatientController extends Controller
         $this->clientService->updateInfo($id, $request->all());
         Session::flash('success', "Information updated successfully!");
         return redirect(url('userprofile', [Auth::user()]));
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 
     private function fetchInfoOrFail(int $id)
